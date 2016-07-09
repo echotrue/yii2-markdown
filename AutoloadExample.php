@@ -9,6 +9,6 @@ class AutoloadExample extends \yii\base\Widget
 {
     public function run()
     {
-        return "The first yii extension!";
+        return "(v 2.0)The first yii extension!";
     }
 }
