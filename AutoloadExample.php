@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /**
  * This is just an example.
  */
-class AutoloadExample extends \yii\base\Widget
+class AutoloadExample extends \yii\widgets\InputWidget
 {
 
     public $attributes;
@@ -27,7 +27,7 @@ class AutoloadExample extends \yii\base\Widget
             $input = Html::textarea($this->name, '', $this->attributes);
         }
         echo $input;
-        Assets::register($view);//将Ueditor用到的脚本资源输出到视图
+        Assets::register($view);
 
         $js = 'testEditor = editormd("' . $this->options['id'] . '", {
                     width   : "90 % ",
@@ -35,7 +35,7 @@ class AutoloadExample extends \yii\base\Widget
                     syncScrolling : "single",
                     path    : " ../lib / "
                 });';
-        $view->registerJs($js, $view::POS_END);//将Ueditor初始化脚本也响应到视图中
+        $view->registerJs($js, $view::POS_END);
     }
 
 }
