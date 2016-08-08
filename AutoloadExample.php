@@ -21,8 +21,16 @@ class AutoloadExample extends \yii\widgets\InputWidget
     public function run()
     {
         $view = $this->getView();
-        Assets::register($view);
 
+        if ($this->hasModel()) {
+            $html = Html::activeTextarea($this->model, $this->attribute, $this->options);
+        } else {
+            $html = Html::textarea($this->name, $this->value, $this->options);
+        }
+
+        echo $html;
+
+        Assets::register($view);
         $js = 'var testEditor;
                 $(function() {
                 testEditor = editormd("yii-markdown", {
@@ -31,16 +39,9 @@ class AutoloadExample extends \yii\widgets\InputWidget
                     syncScrolling : "single",
                     path    : "../lib/"
                 });
-            });';
-        $this->view->registerJs($js);
-
-        if ($this->hasModel()) {
-            $html = Html::activeTextarea($this->model, $this->attribute, $this->options);
-        } else {
-            $html = Html::textarea($this->name, $this->value, $this->options);
-        }
-
-        return $html;
+            });
+            alert("dd")';
+        $view->registerJs($js, $view::POS_END);
 
     }
 
