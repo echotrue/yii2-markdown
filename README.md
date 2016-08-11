@@ -2,8 +2,13 @@
 
 Thank you for choosing this extension , enjoy it!!!
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2/v/stable.png)](https://packagist.org/packages/echotrue/yii2-markdown)
-
+[![Latest Stable Version](https://poser.pugx.org/echotrue/yii2-markdown/v/stable)](https://packagist.org/packages/echotrue/yii2-markdown)
+[![Total Downloads](https://poser.pugx.org/echotrue/yii2-markdown/downloads)](https://packagist.org/packages/echotrue/yii2-markdown)
+[![Latest Unstable Version](https://poser.pugx.org/echotrue/yii2-markdown/v/unstable)](https://packagist.org/packages/echotrue/yii2-markdown)
+[![License](https://poser.pugx.org/echotrue/yii2-markdown/license)](https://packagist.org/packages/echotrue/yii2-markdown)
+[![Monthly Downloads](https://poser.pugx.org/echotrue/yii2-markdown/d/monthly)](https://packagist.org/packages/echotrue/yii2-markdown)
+[![Daily Downloads](https://poser.pugx.org/echotrue/yii2-markdown/d/daily)](https://packagist.org/packages/echotrue/yii2-markdown)
+[![composer.lock](https://poser.pugx.org/echotrue/yii2-markdown/composerlock)](https://packagist.org/packages/echotrue/yii2-markdown)
 
 ### Installation
 
