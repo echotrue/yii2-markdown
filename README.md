@@ -1,9 +1,11 @@
-使用方法
-====
-实现markdown在线编辑器
+# An Online Editor Extension For Yii Framework Version 2
 
-Installation
-------------
+Thank you for choosing this extension , enjoy it!!!
+
+[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2/v/stable.png)](https://packagist.org/packages/echotrue/yii2-markdown)
+
+
+### Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
@@ -19,13 +21,35 @@ or add
 "echotrue/yii2-markdown": "*"
 ```
 
-to the require section of your `composer.json` file.
+to the require section of your `composer.json` file . and run this command:
+
+```
+composer update
+```
 
 
-Usage
------
+### Usage
 
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \echotrue\foobar\AutoloadExample::widget(); ?>```
+<?= $form->field($model, 'username')->widget(\echtrue\markdown\MarkDown::className(), [
+        'options'    => ['id' => 'yii-markdown','width'=>'1000px'],
+        'model'      => $model,
+        'attribute' => 'username',
+    ]) ?>
+
+```
+
+or
+
+```
+<?= \echotrue\markdown\MarkDown::widget([
+        'options' => [
+            'id' => 'yii-markdown',
+            //'height'=>"100px",
+        ],
+        'name'    => 'username',
+    ]); ?>
+    
+```
