@@ -81,13 +81,11 @@ class MarkDown extends \yii\widgets\InputWidget
         $this->options['height']               = isset($this->options['height']) ?: "640px";
         $this->options['imageUpload']          = isset($this->options['imageUpload']) ?: true;
         $this->options['imageUploadURL']       = self::$baseUrl . 'php/upload.php';
-        $this->options['theme']                = 'dark';
-        $this->options['previewTheme']         = 'dark';
-        $this->options['editorTheme']          = 'pastel-on-dark';
-        $this->options['watch']                = true;
-        $this->options['previewCodeHighlight'] = false;
-//        $this->options['htmlDecode']           = "style,script,iframe|on*";
-
+        $this->options['theme']                = isset($this->options['theme']) ?: 'dark';
+        $this->options['previewTheme']         = isset($this->options['previewTheme']) ?: 'dark';
+        $this->options['editorTheme']          = isset($this->options['editorTheme']) ?: 'pastel-on-dark';
+        $this->options['watch']                = isset($this->options['watch']) ?: true;
+        $this->options['previewCodeHighlight'] = isset($this->options['previewCodeHighlight']) ?: false;
 
         parent::init();
     }
@@ -108,7 +106,12 @@ class MarkDown extends \yii\widgets\InputWidget
             $input = '<div id="yii-markdown">' . Html::activeTextarea($this->model,
                     $this->attribute, ['display' => 'none']) . '</div>';
         } else {
-            $input = '<div id="yii-markdown"><textarea style="display:none;"></textarea></div>';
+            if (empty($this->name)) {
+                throw new HttpException(422, 'The name of textarea is not allow to be null');
+            }
+            $input = '<div id="yii-markdown">' . Html::textarea($this->name, '',
+                    ['style' => "display:none;"]) . '</div>';
+
         }
         echo $input;
 
