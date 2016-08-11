@@ -6,7 +6,7 @@
  * Date: 16/7/21
  * Time: 上午9:51
  */
-namespace echotrue\foobar;
+namespace echotrue\markdown;
 
 use Yii;
 
@@ -37,6 +37,6 @@ class MarkdownAsset extends \yii\web\AssetBundle
         /**
          * the assets url
          */
-        $this->sourcePath = __DIR__ . '/assets';
+        $this->sourcePath = __DIR__ . '/assets/';
     }
 }

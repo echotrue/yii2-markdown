@@ -6,7 +6,7 @@
  * Date: 16/7/21
  * Time: 上午9:51
  */
-namespace echotrue\foobar;
+namespace echotrue\markdown;
 
 use Yii;
 use yii\helpers\Html;
