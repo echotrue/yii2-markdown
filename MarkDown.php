@@ -4,6 +4,7 @@ namespace echotrue\markdown;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\HttpException;
 
 
@@ -62,19 +63,15 @@ class MarkDown extends \yii\widgets\InputWidget
      */
     public function init()
     {
-        self::$baseUrl = './assets/';//Yii::getAlias('@web') . '/markDownAssets/';
-
         foreach ($this->options as $k => $v) {
             if ($k != 'id' && !in_array($k, self::$attr)) {
                 throw new HttpException(422, 'Unknown attribute :' . $k);
             }
         }
 
-        $this->options['path']                 = self::$baseUrl;
-        $this->options['pluginPath']           = self::$baseUrl . 'plugins/';
         $this->options['height']               = isset($this->options['height']) ?: "640px";
         $this->options['imageUpload']          = isset($this->options['imageUpload']) ?: true;
-        $this->options['imageUploadURL']       = 'upload';
+        $this->options['imageUploadURL']       = Url::to(['upload']);
         $this->options['theme']                = isset($this->options['theme']) ?: 'dark';
         $this->options['previewTheme']         = isset($this->options['previewTheme']) ?: 'dark';
         $this->options['editorTheme']          = isset($this->options['editorTheme']) ?: 'pastel-on-dark';
@@ -96,6 +93,21 @@ class MarkDown extends \yii\widgets\InputWidget
 
         $view = $this->getView();
 
+
+        /**
+         * register the assets
+         */
+        MarkdownAsset::register($view);
+
+        /**
+         * register js in the view
+         */
+        $js = 'var testEditor;
+                $(function() {
+                    testEditor = editormd("' . $this->options['id'] . '", ' . $this->getOptions() . ');
+                })';
+        $view->registerJs($js, $view::POS_END);
+
         if ($this->hasModel()) {
             $input = '<div id="yii-markdown">' . Html::activeTextarea($this->model,
                     $this->attribute, ['display' => 'none']) . '</div>';
@@ -108,17 +120,6 @@ class MarkDown extends \yii\widgets\InputWidget
 
         }
         echo $input;
-
-        //output the assets file to view
-        MarkdownAsset::register($view);
-
-        //output settings to view
-        $js = 'var testEditor;
-                $(function() {
-                    testEditor = editormd("' . $this->options['id'] . '", ' . $this->getOptions() . ');
-                })';
-        $view->registerJs($js, $view::POS_END);
-
     }
 
     /**
@@ -133,6 +134,15 @@ class MarkDown extends \yii\widgets\InputWidget
          */
         unset($this->options['id']);
 
+        /**
+         * Get the asset path which is published
+         */
+        $publishedAssetUrl = $this->getView()
+                ->getAssetManager()
+                ->getBundle('echotrue\markdown\MarkdownAsset', true)->baseUrl . '/assets/';
+
+        $this->options['path']       = $publishedAssetUrl;
+        $this->options['pluginPath'] = $publishedAssetUrl . 'plugins/';
         return Json::encode($this->options);
     }
 }

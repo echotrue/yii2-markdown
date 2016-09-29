@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: axlrose
- * Date: 16/7/21
- * Time: 上午9:51
- */
 namespace echotrue\markdown;
 
 use Yii;
@@ -20,11 +14,11 @@ use Yii;
 class MarkdownAsset extends \yii\web\AssetBundle
 {
     public $js  = [
-        'js/editormd.js',
+        'assets/js/editormd.js',
     ];
     public $css = [
-        'css/style.css',
-        'css/editormd.css',
+        'assets/css/style.css',
+        'assets/css/editormd.css',
     ];
 
     public $depends = [
@@ -37,6 +31,6 @@ class MarkdownAsset extends \yii\web\AssetBundle
         /**
          * the assets url
          */
-        $this->sourcePath = __DIR__ . '/assets/';
+        $this->sourcePath = __DIR__;
     }
 }
