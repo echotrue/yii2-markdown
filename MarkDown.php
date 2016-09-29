@@ -1,11 +1,4 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: axlrose
- * Date: 16/7/21
- * Time: 上午9:51
- */
 namespace echotrue\markdown;
 
 use Yii;
