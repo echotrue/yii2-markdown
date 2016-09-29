@@ -81,7 +81,7 @@ class MarkDown extends \yii\widgets\InputWidget
         $this->options['pluginPath']           = self::$baseUrl . 'plugins/';
         $this->options['height']               = isset($this->options['height']) ?: "640px";
         $this->options['imageUpload']          = isset($this->options['imageUpload']) ?: true;
-        $this->options['imageUploadURL']       = self::$baseUrl . 'php/upload.php';
+        $this->options['imageUploadURL']       = 'upload';
         $this->options['theme']                = isset($this->options['theme']) ?: 'dark';
         $this->options['previewTheme']         = isset($this->options['previewTheme']) ?: 'dark';
         $this->options['editorTheme']          = isset($this->options['editorTheme']) ?: 'pastel-on-dark';
