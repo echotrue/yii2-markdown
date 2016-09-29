@@ -69,8 +69,6 @@ class MarkDown extends \yii\widgets\InputWidget
      */
     public function init()
     {
-
-        
         self::$baseUrl = 'assets/';//Yii::getAlias('@web') . '/markDownAssets/';
 
         foreach ($this->options as $k => $v) {
