@@ -21,8 +21,6 @@ class MarkDown extends \yii\widgets\InputWidget
         'width',
         'height',
         'syncScrolling',
-        'path',
-        'pluginPath',
         'theme',
         'previewTheme',
         'editorTheme',
@@ -69,12 +67,13 @@ class MarkDown extends \yii\widgets\InputWidget
             }
         }
 
-        $this->options['height']               = isset($this->options['height']) ?: "640px";
-        $this->options['imageUpload']          = isset($this->options['imageUpload']) ?: true;
-        $this->options['imageUploadURL']       = Url::to(['upload']);
-        $this->options['theme']                = isset($this->options['theme']) ?: 'dark';
-        $this->options['previewTheme']         = isset($this->options['previewTheme']) ?: 'dark';
-        $this->options['editorTheme']          = isset($this->options['editorTheme']) ?: 'pastel-on-dark';
+        $this->options['width']          = isset($this->options['width']) ?: "980px";
+        $this->options['height']         = isset($this->options['height']) ?: "640px";
+        $this->options['imageUpload']    = isset($this->options['imageUpload']) ?: true;
+        $this->options['imageUploadURL'] = Url::to(['upload']);
+//        $this->options['theme']                = isset($this->options['theme']) ?: 'dark';
+//        $this->options['previewTheme']         = isset($this->options['previewTheme']) ?: 'dark';
+//        $this->options['editorTheme']          = isset($this->options['editorTheme']) ?: 'pastel-on-dark';
         $this->options['watch']                = isset($this->options['watch']) ?: true;
         $this->options['previewCodeHighlight'] = isset($this->options['previewCodeHighlight']) ?: false;
 
@@ -84,24 +83,17 @@ class MarkDown extends \yii\widgets\InputWidget
 
     /**
      * render the widget
+     *
+     * @throws HttpException
      */
     public function run()
     {
-//        $options    = $this->options;
-//        $model      = $this->model;
-//        $attributes = $this->attributes;
-
         $view = $this->getView();
 
-
-        /**
-         * register the assets
-         */
+        /** register the assets **/
         MarkdownAsset::register($view);
 
-        /**
-         * register js in the view
-         */
+        /** register js in the view */
         $js = 'var testEditor;
                 $(function() {
                     testEditor = editormd("' . $this->options['id'] . '", ' . $this->getOptions() . ');

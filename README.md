@@ -35,7 +35,21 @@ composer update
 
 ### Usage
 
-Once the extension is installed, simply use it in your code by  :
+Add an actions() method in controller
+
+```
+public function actions()
+    {
+        return [
+            'upload'  => [
+                'class' => 'echotrue\markdown\UploadAction',
+            ],
+        ];
+    }
+```
+
+
+used in view  :
 
 ```php
 <?= $form->field($model, 'username')->widget(\echtrue\markdown\MarkDown::className(), [
@@ -58,3 +72,12 @@ or
     ]); ?>
     
 ```
+
+upload path :
+
+create a new folder which named `markdown_upload` in webroot
+
+### configuration
+
+width:
+height:
